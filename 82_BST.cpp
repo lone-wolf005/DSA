@@ -129,7 +129,7 @@ int main(){
     levelOrderTraversal(root);
     inorder(root);
 
-    root = deleteBST(root,17);
+    root = deleteBST(root,10);
     cout<<endl;
     levelOrderTraversal(root);
     inorder(root);

@@ -10,7 +10,7 @@ void printarray(int*arr,int s,int e){
 }
 void merge(int *arr,int s,int e){
     int mid = (s+e) / 2;
-    int len1= mid-s +1;
+    int len1= mid- s +1;
     int len2 = e-mid;
     int *a1 = new int[len1];
     int *a2 = new int[len2];
