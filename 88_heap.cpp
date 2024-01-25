@@ -57,7 +57,7 @@ class heap{
    }
 };
 
-// _______ most _____important__________
+// _______ most_important__________
 
 void heapify(int *arr,int n,int i){
      int largest = i;
@@ -109,9 +109,31 @@ int main(){
     }
     // heap_sort
     heapSort(arr,n);
+
     for(int i =1;i<=n;i++){
         cout<<arr[i]<<" ";
     }
     cout<<endl;
+
+   // _______max_heap using stl_________________
+    priority_queue<int>pq;
+    pq.push(1);
+    pq.push(5);
+    pq.push(7);
+    pq.push(9); 
+    pq.pop();
+    
+
+   //  for(auto x:pq)cout<<x<<" ";
+   cout<<pq.top()<<endl;
+
+   // __________MIN-HEAP USING STL_______________
+   priority_queue<int,vector<int>,greater<int>>minheap;
+   minheap.push(3);
+   minheap.push(6);
+   minheap.push(9); 
+
+   cout<<minheap.top()<<endl;
+
 return 0;
 }
