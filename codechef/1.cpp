@@ -6,42 +6,38 @@ void Radhe(){
  ll t;
  cin>>t;
  while(t--){
-     int n;
-     cin>>n;
-     vector<int>v1(n);
-     for(int i=0;i<n;i++)cin>>v1[i];
-
-     unordered_map<int,pair<int,int>>m1;
-     int cnt = 1;
-     vector<int>ans;
-     for(auto x:v1){
-        if(m1.count(x)){
-            if(m1[x].second > 0){
-                ans.push_back(m1[x].first);
-                m1[x].second=m1[x].second-1;
-            }
-            else {
-                ans.push_back(cnt);
-                m1[x].first=cnt;
-                m1[x].second=x-1;
-                cnt++;
-            }
+     int n;cin>>n;
+     int N = 10e6+1;
+    vector<bool>isprime(N,true);
+   isprime[0] = isprime[1] = false;
+   for(int i = 2; i < N ; i++){
+    if(isprime[i]){
+    for(int j = 2*i ; j < N ; j+=i){
+            isprime[j]=false;
         }
-        else{
-            ans.push_back(cnt);
-            m1[x].first=cnt;
-            m1[x].second=x-1;
-            cnt++;
-        }
-     }
-     
-     bool is =false;
-     for(auto x:m1){
-        if(x.second.second>0){is=true;break;}
-     }
-     if(is)cout<<-1;
-     else for(auto x:ans)cout<<x<<" ";
-     cout<<endl;
+    }
+}
+   vector<int>primes;
+   for(int i=2;i<N;i++)if(isprime[i])primes.push_back(i);
+   int ind = 0;
+   if(n&1){
+    cout<<1<<endl;
+    n-=1;
+    while(n){
+        cout<<primes[ind]<<" "<<primes[ind];
+        n-=2;
+        ind++;
+    }
+   }
+   else{
+    while(n){
+        cout<<primes[ind]<<" "<<primes[ind];
+        n-=2;
+        ind++;
+    }
+      
+   }
+   cout<<endl;
  }
 }
 int main(){
