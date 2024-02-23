@@ -7,11 +7,6 @@ using namespace std;
 
 class Solution {
   public:
-    /*  Function to implement Bellman Ford
-    *   edges: vector of vectors which represents the graph
-    *   S: source vertex to start traversing graph with
-    *   V: number of vertices
-    */
     vector<int> bellman_ford(int V, vector<vector<int>>& edges, int S) {
         int n = V;
         vector<int>dist(V,1e8);

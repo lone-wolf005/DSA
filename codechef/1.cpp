@@ -2,45 +2,30 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long int
-void Radhe(){
- ll t;
- cin>>t;
- while(t--){
-     int n;cin>>n;
-     int N = 10e6+1;
-    vector<bool>isprime(N,true);
-   isprime[0] = isprime[1] = false;
-   for(int i = 2; i < N ; i++){
-    if(isprime[i]){
-    for(int j = 2*i ; j < N ; j+=i){
-            isprime[j]=false;
-        }
-    }
-}
-   vector<int>primes;
-   for(int i=2;i<N;i++)if(isprime[i])primes.push_back(i);
-   int ind = 0;
-   if(n&1){
-    cout<<1<<endl;
-    n-=1;
-    while(n){
-        cout<<primes[ind]<<" "<<primes[ind];
-        n-=2;
-        ind++;
-    }
-   }
-   else{
-    while(n){
-        cout<<primes[ind]<<" "<<primes[ind];
-        n-=2;
-        ind++;
-    }
-      
-   }
-   cout<<endl;
- }
-}
+
 int main(){
-Radhe();
+    int x;
+    cin>>x;
+    vector<int>v1(3);
+    for(int i=0;i<3;i++){
+        cin>>v1[i];
+    }
+    vector<int>dp(x+1,INT_MIN);
+
+    // defining the total possible value of states
+    // each state dp[x] give the answer of minimun no of coins required to get sum of x
+    dp[0]=0;
+    for(int i =1;i<=x;i++){
+        for(int j = 0; j<3;j++){
+            if(i>=v1[j]){
+                dp[i]=max(dp[i],1+dp[i-v1[j]]);
+            }
+        }
+  
+    }
+       if(dp[x]==INT_MIN)cout<<-1<<endl;
+     else cout<<dp[x]<<endl;
+
+
 return 0;
 }

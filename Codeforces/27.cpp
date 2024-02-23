@@ -1,15 +1,28 @@
-//Radhe Radhe
-#include<bits/stdc++.h>
-using namespace std;
+#include <iostream>
 #define ll long long int
+
+using namespace std;
+bool isFair(ll n) {
+    ll num = n;
+    while (num!=0){
+        int x = num%10;
+        if (x!=0 && n%x!=0){
+            return false;
+        }
+        num/=10;
+    }
+    return true;
+}
+
 int main(){
- int n;cin>>n;
- int sum=1;
- for(int i=2;i<9;i++){
-
- }
- int ans = max(n%sum,sum-(n%sum));
- cout<<n+ans<<endl;
-
-return 0;
+    int t;
+    cin>>t;
+    for (int i = 0; i < t; ++i) {
+        ll n;
+        cin>>n;
+        while (!isFair(n)) {
+            n += 1;
+        }
+        cout<<n<<"\n";
+    }
 }

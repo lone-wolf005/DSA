@@ -6,12 +6,12 @@ using namespace std;
 class TrieNode{
     public:
     char data;
-    TrieNode*children[26];
+    TrieNode*children[10];
     bool isTerminal;
 
     TrieNode(char ch){
         data=ch;
-        for(int i=0;i<26;i++){
+        for(int i=0;i<10;i++){
             children[i]=NULL;
         }
         isTerminal=false;
@@ -28,7 +28,7 @@ class Trie{
             root->isTerminal=true;
             return;
         }
-        int index = word[0]-'A';
+        int index = word[0]-'0';
         TrieNode*child;
 
         if(root->children[index] != NULL){
@@ -44,24 +44,6 @@ class Trie{
       void insertWord(string word){
         insertUtil(root,word);
     }  
-    
-    bool searchUtil(TrieNode*root,string word){
-        if(word.length()==0){
-            return root->isTerminal;
-        }
-        int index = word[0]-'A';
-        TrieNode*child;
-        if(root->children[index]!=NULL){
-            child=root->children[index];
-        }
-        else{ return false;}
-        return searchUtil(child,word.substr(1));
-
-    }
-  
-    bool searchWord(string word){
-        return searchUtil(root,word);
-    } 
 };
 int main(){
   Trie * t= new Trie();
@@ -69,7 +51,6 @@ int main(){
   t->insertWord("JIGAR");
   t->insertWord("JIGARA");
   t->insertWord("JIGARAO");
-
-  cout<<"isPresent"<<t->searchWord("IGAR");
+  
 return 0;
 }
